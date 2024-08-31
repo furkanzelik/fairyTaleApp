@@ -1,26 +1,59 @@
-import React from 'react';
-import { SafeAreaView, Text, StyleSheet } from 'react-native';
+import React, {useState} from 'react';
+import {
+    FlatList,
+    SafeAreaView,
+    StatusBar,
+    StyleSheet,
+    Text,
+    TouchableOpacity, View,
+} from 'react-native';
 
-const Home = () => {
+
+const App = () => {
     return (
         <SafeAreaView style={styles.container}>
-            <Text style={styles.text}>Hello World</Text>
+            <View>
+                <Text style={styles.title}>Tales You Have</Text>
+            </View>
+            <FlatList
+                data={[
+                    {key: 'Tale 1'},
+                    {key: 'Tale 2'},
+                    {key: 'Tale 3'},
+                    {key: 'Tale 4'},
+                    {key: 'Tale 5'},
+                    {key: 'Tale 6'},
+                    {key: 'Tale 7'},
+                    {key: 'Tale 8'},
+                    {key: 'Tale 9'},
+                    {key: 'Tale 10'},
+                ]}
+                renderItem={({item}) => (
+                    <TouchableOpacity style={styles.item}>
+                        <Text style={styles.taleList}>{item.key}</Text>
+                    </TouchableOpacity>
+                )}></FlatList>
         </SafeAreaView>
     );
 };
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#f5f5f5',
     },
-    text: {
+
+    title: {
+        fontSize: 32,
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+
+    taleList: {
         fontSize: 24,
-        color: '#333',
+        margin: 10,
+        borderBottomColor: 'black',
+        borderBottomWidth: 3,
     },
 });
 
-export default Home;
+export default App;
